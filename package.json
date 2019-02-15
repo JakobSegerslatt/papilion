@@ -1,10 +1,13 @@
 {
   "name": "papilion",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Common utils i use",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": ["src/**/*", "dist/**/*"],
+  "files": [
+    "src/**/*",
+    "dist/**/*"
+  ],
   "scripts": {
     "build": "tsc",
     "build:watch": "tsc --watch",
