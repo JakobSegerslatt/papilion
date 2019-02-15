@@ -6,5 +6,9 @@
         "outDir": "./dist",
         "strict": true,
         "strictPropertyInitialization": false
-    }
+    },
+    "exclude": [
+        "node_modules",
+        "dist"
+    ]
 }
