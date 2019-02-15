@@ -7,6 +7,10 @@
         "strict": true,
         "strictPropertyInitialization": false
     },
+    "include": [
+        "test",
+        "src",
+    ],
     "exclude": [
         "node_modules",
         "dist"
