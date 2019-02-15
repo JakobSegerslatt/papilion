@@ -5,6 +5,7 @@ Documentation
 https://jakobsegerslatt.github.io/papilion/
 
 
-[![Build Status](https://travis-ci.org/<username>/<reponame>.svg?branch=master)](https://travis-ci.org/<username>/<reponame>)
+[![Build Status](https://travis-ci.org/JakobSegerslatt/papilion.svg?branch=master)](https://travis-ci.org/<username>/<reponame>)
 
-[![Coverage Status](https://coveralls.io/repos/github/<username>/<reponame>/badge.svg?branch=master)](https://coveralls.io/github/<username>/<reponame>?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/JakobSegerslatt/papilion/badge.svg?branch=master)](https://coveralls.io/github/JakobSegerslatt/papilion?branch=master)
+
