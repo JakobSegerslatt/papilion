@@ -9,7 +9,9 @@
     "lint": "tslint --project \"./tsconfig.json\"",
     "test": "mocha --reporter spec",
     "docs": "typedoc --out docs src",
-    "gh-pages": "rimraf docs && npm run docs && gh-pages -d docs"
+    "gh-pages": "rimraf docs && npm run docs && gh-pages -d docs",
+    "cover": "istanbul cover node_modules/mocha/bin/_mocha test/*.js - - -R spec",
+    "ci": "npm run lint && npm run build && npm run cover"
   },
   "repository": {
     "type": "git",
@@ -26,10 +28,13 @@
   "homepage": "https://github.com/JakobSegerslatt/papilion#readme",
   "devDependencies": {
     "@types/chai": "^4.1.7",
+    "@types/istanbul": "^0.4.30",
     "@types/mocha": "^5.2.6",
     "@types/node": "^11.9.4",
     "chai": "^4.2.0",
+    "coveralls": "^3.0.2",
     "gh-pages": "^2.0.1",
+    "istanbul": "^0.4.5",
     "mocha": "^5.2.0",
     "tslint": "^5.12.1",
     "typedoc": "^0.14.2",
