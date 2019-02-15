@@ -1,3 +1,38 @@
 {
-    
+  "name": "papilion",
+  "version": "1.0.0",
+  "description": "Common utils i use",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "lint": "tslint --project \"./tsconfig.json\"",
+    "test": "mocha --reporter spec",
+    "docs": "typedoc --out docs src",
+    "gh-pages": "rimraf docs && npm run docs && gh-pages -d docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JakobSegerslatt/papilion.git"
+  },
+  "keywords": [
+    "utils"
+  ],
+  "author": "Jakob Segerslätt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JakobSegerslatt/papilion/issues"
+  },
+  "homepage": "https://github.com/JakobSegerslatt/papilion#readme",
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.6",
+    "@types/node": "^11.9.4",
+    "chai": "^4.2.0",
+    "gh-pages": "^2.0.1",
+    "mocha": "^5.2.0",
+    "tslint": "^5.12.1",
+    "typedoc": "^0.14.2",
+    "typescript": "^3.3.3"
+  }
 }
