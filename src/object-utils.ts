@@ -1,3 +1,30 @@
+/**
+ * Deletes all properties/entries within an object or an array
+ * which are null, undefined or empty object.
+ *
+ * Note that empty arrays are not cleared!
+ *
+ * @example
+ * clearNulls([
+ *  {
+ *    foo: 'foo',
+ *    bar: false,
+ *    baz: null
+ *  },
+ *  { },
+ *  [ ]
+ * ]);
+ * returns
+ * [
+ *  {
+ *    foo: 'foo',
+ *    bar: false,
+ *  },
+ *  [ ]
+ * ]
+ *
+ * @param obj The object to clean
+ */
 export function clearNulls(obj: any): object {
     if (isObject(obj) || Array.isArray(obj)) {
         for (const key in obj) {
@@ -34,22 +61,11 @@ export function clone<T = any>(obj: T | T[]): T {
     return newObj as T;
 }
 
-export function createGuid(): string {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
-        // tslint:disable-next-line:no-bitwise
-        const r = (Math.random() * 16) | 0;
-        // tslint:disable-next-line:no-bitwise
-        const v = c === 'x' ? r : (r & 0x3) | 0x8;
-        return v.toString(16);
-    });
-}
-
-export function contains(x: string, y: string): boolean {
-    x = x || '';
-    y = y || '';
-    return x.toLowerCase().includes(y.toLowerCase());
-}
-
+/**
+ * Creates a new instance of @param type and copies all values from
+ * @param unTypedItem with a simple for in loop.
+ * Works non-recursively
+ */
 export function convertToTypedClass<T = object>(type: any, unTypedItem: any): T {
     const newItem = new (type as any)();
     if (unTypedItem) {
@@ -60,6 +76,22 @@ export function convertToTypedClass<T = object>(type: any, unTypedItem: any): T 
         }
     }
     return newItem;
+}
+
+/**
+ * Finds the enum key for a specfic value
+ * in an object, class or Enum
+ * @param obj The object to check, e.g. an Enum
+ * @param value A value from within the object
+ */
+export function findKeyForValue(obj: any, value: any): any {
+    for (const key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            if (obj[key] === value) {
+                return key;
+            }
+        }
+    }
 }
 
 /**
@@ -150,64 +182,20 @@ export function groupArrayByProperty<T = any>(array: T[], propertyName: string):
 //     }, []);
 // }
 
-// A value can be 0, false, but not an empty string, null or undefined
-export function isNotNullorEmpty(v: any): boolean {
-    return v !== undefined && v !== '' && v !== null;
-}
-
-export function isObject(obj: any) {
+/**
+ * Checks if @param obj is not null and is an object.
+ */
+export function isObject(obj: any): boolean {
     return obj !== null && typeof obj === 'object';
 }
 
 /**
- * Converts a string to pascalCase
- * @param value The string to convert
- * @returns The string as pascal or an empty string if null
+ * Creates and returns a new array, clearing
+ * duplicates with new Set().
+ * @param val The array to remove duplicates from
+ *
+ * @returns An edited copy of @param val
  */
-export function pascalCase(value: string): string {
-    if (value && typeof value === 'string' && value.length > 0) {
-        return value[0].toLocaleLowerCase() + value.substr(1);
-    }
-    return '';
-}
-
 export function removeDuplicates<T = any>(val: T[]): T[] {
     return Array.from(new Set(val));
-}
-
-export function reverseEnum(obj: any, value: any): any {
-    for (const key in obj) {
-        if (obj.hasOwnProperty(key)) {
-            if (obj[key] === value) {
-                return key;
-            }
-        }
-    }
-}
-
-/**
- * Custom property decorator which helps store a property in session storage
- *
- * e.g. @Storage() token: string;
- */
-export function Storage(name?: string) {
-    return ((target: any, key: string) => {
-        const storageKey = name || key;
-        Object.defineProperty(target, key, {
-            configurable: false,
-            get: () => sessionStorage.getItem(storageKey),
-            set: (val: any) => sessionStorage.setItem(storageKey, val)
-        });
-    });
-}
-
-export function throwIfAlreadyLoaded(parentModule: any, moduleName: string) {
-    if (parentModule) {
-        throw new Error(`${moduleName} has already been loaded.
-        Import Core modules in the AppModule only.`);
-    }
-}
-
-export function trimString(s: string, count = 1): string {
-    return s.substr(0, s.length - count);
 }

@@ -1,18 +1,24 @@
-export { Timer } from './timer';
+export { throwIfAlreadyLoaded } from './angular-utils';
+
+export { Storage } from './component-decorators';
+
 export {
     clearNulls,
     clone,
-    createGuid,
-    contains,
     convertToTypedClass,
+    findKeyForValue,
     flattenTree,
     groupArrayByProperty,
-    isNotNullorEmpty,
     isObject,
-    pascalCase,
     removeDuplicates,
-    reverseEnum,
-    Storage,
-    throwIfAlreadyLoaded,
-    trimString
-} from './helper-functions';
+} from './object-utils';
+
+export {
+    createGuid,
+    contains,
+    isNotNullorEmpty,
+    pascalCase,
+    trimString,
+} from './string-utils';
+
+export { Timer } from './timer';
