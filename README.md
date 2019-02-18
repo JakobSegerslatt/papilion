@@ -7,9 +7,9 @@
 Helpers for strings and objects, an accurate timer and some useful angular spefic helpers and component decorators.
 
 # How to use
-### `npm i papilion`
+**`npm i papilion`**
 
-### `import { Timer } from 'papilion'`
+**`import { Timer } from 'papilion'`**
 
 # Documentation
 https://jakobsegerslatt.github.io/papilion/
