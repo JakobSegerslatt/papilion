@@ -21,6 +21,13 @@ describe('createGuid() test', () => {
     });
 });
 
+describe('contains() test', () => {
+    it('should return true for foo, oo', () => {
+        const result = contains('foo', 'oo');
+        expect(result).to.equal(true);
+    });
+});
+
 describe('pascalCase() test', () => {
     it('should return camelCase for CamelCase string', () => {
         const result = pascalCase('CamelCase');
