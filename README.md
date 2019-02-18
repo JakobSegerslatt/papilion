@@ -4,7 +4,7 @@
 
 **Common utils i use**
 
-Covers strings, objects, an accurate timer and some useful angular spefic helpers and component decorators.
+Helpers for strings and objects, an accurate timer and some useful angular spefic helpers and component decorators.
 
 # How to use
 ### `npm i papilion`
