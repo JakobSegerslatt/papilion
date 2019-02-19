@@ -13,10 +13,9 @@
     "build:watch": "tsc --watch",
     "lint": "tslint --project \"./tsconfig.json\"",
     "test": "mocha -r ts-node/register test/**/*.spec.ts",
-    "cover": "nyc mocha --require ts-node/register --require source-map-support/register --exclude-after-remap false --full-trace test/**/*.spec.ts",
+    "cover": "nyc mocha --exclude-after-remap false --full-trace test/**/*.spec.ts",
     "ci": "npm run lint && npm run build && npm run cover",
     "coveralls": "npm run cover && cat ./coverage/lcov.info | coveralls",
-    "coveralls2": "cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
     "postversion": "git push && git push --tags",
     "prepublishOnly": "npm run ci",
     "preversion": "npm run ci",
@@ -25,7 +24,7 @@
   },
   "nyc": {
     "include": [
-      "test/**/*.ts"
+      "test/**/*.spec.ts"
     ],
     "extension": [
       ".ts"
@@ -34,11 +33,12 @@
       "**/*.d.ts"
     ],
     "require": [
-      "ts-node/register"
+      "ts-node/register",
+      "source-map-support/register"
     ],
     "reporter": [
-      "text-summary",
-      "html"
+      "lcov",
+      "text-summary"
     ],
     "all": true
   },
