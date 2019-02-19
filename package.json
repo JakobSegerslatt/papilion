@@ -17,6 +17,8 @@
     "cover-old": "istanbul cover node_modules/mocha/bin/_mocha test/*.spec.ts --reporter",
     "ci": "npm run lint && npm run build && npm run cover",
     "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
+    "coveralls2": "cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
+    
     "postversion": "git push && git push --tags",
     "prepublishOnly": "npm run ci",
     "preversion": "npm run ci",
@@ -25,12 +27,13 @@
   },
   "nyc": {
     "include": [
-      "src/**/*.ts",
-      "src/**/*.tsx"
+      "test/**/*.ts"
     ],
     "extension": [
-      ".ts",
-      ".tsx"
+      ".ts"
+    ],
+    "exclude": [
+      "**/*.d.ts"
     ],
     "require": [
       "ts-node/register"
@@ -39,8 +42,7 @@
       "text-summary",
       "html"
     ],
-    "sourceMap": true,
-    "instrument": true
+    "all": true  
   },
   "repository": {
     "type": "git",

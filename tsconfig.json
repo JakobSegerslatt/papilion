@@ -4,8 +4,9 @@
         "module": "commonjs",
         "declaration": true,
         "outDir": "./dist",
+        "sourceMap": true,
         "strict": true,
-        "strictPropertyInitialization": false
+        "strictPropertyInitialization": false,
     },
     "include": [
         "test",
