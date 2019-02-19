@@ -49,6 +49,10 @@ export function clearNulls(obj: any): object {
     return obj;
 }
 
+/**
+ * @returns A copy of @param obj
+ * It can be an array, object, class or primitive type.
+ */
 export function clone<T = any>(obj: T | T[]): T {
     let newObj: T | T[];
     if (Array.isArray(obj)) {
