@@ -15,7 +15,7 @@
     "test": "mocha -r ts-node/register test/**/*.spec.ts",
     "cover": "nyc mocha --exclude-after-remap false --full-trace test/**/*.spec.ts",
     "ci": "npm run lint && npm run build && npm run cover",
-    "coveralls": "npm run cover && cat ./coverage/lcov.info | coveralls",
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
     "postversion": "git push && git push --tags",
     "prepublishOnly": "npm run ci",
     "preversion": "npm run ci",
