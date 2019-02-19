@@ -13,7 +13,7 @@
     "build:watch": "tsc --watch",
     "lint": "tslint --project \"./tsconfig.json\"",
     "test": "mocha -r ts-node/register test/**/*.spec.ts",
-    "cover": "nyc mocha --exclude-after-remap false --full-trace --bail test/**/*.spec.ts",
+    "cover": "nyc mocha --exclude-after-remap false --full-trace --bail -R spec test/**/*.spec.ts",
     "ci": "npm run lint && npm run build && npm run cover",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "postversion": "git push && git push --tags",
