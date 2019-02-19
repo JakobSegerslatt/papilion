@@ -69,6 +69,26 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>A more accurate timer than setInterval.
+							Requires a callback but works as a class instead of
+						a function, and provides functions for start and stop.</p>
+					</div>
+					<p>The timer works with setTimer instead of setInterval,
+						safechecking the amount of time that SHOULD have passed since the start
+						of the timer and takes that difference into account for setTimer.
+						That means that you can be sure that with an input of 1000ms,
+					after 10 minutes the callback function has been called 600 times.</p>
+					<dl class="tsd-comment-tags">
+						<dt>example</dt>
+						<dd><p>myTimer = new Timer(() =&gt; console.log(&#39;One seconds passed!&#39;, 1000));
+							myTimer.stop();</p>
+						</dd>
+					</dl>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -90,7 +110,6 @@
 						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_timer_.timer.html#currenttime" class="tsd-kind-icon">current<wbr>Time</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_timer_.timer.html#duration" class="tsd-kind-icon">duration</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_timer_.timer.html#starttime" class="tsd-kind-icon">start<wbr>Time</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_timer_.timer.html#timerid" class="tsd-kind-icon">timer<wbr>Id</a></li>
@@ -101,7 +120,7 @@
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_timer_.timer.html#reset" class="tsd-kind-icon">reset</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_timer_.timer.html#run" class="tsd-kind-icon">run</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_timer_.timer.html#start" class="tsd-kind-icon">start</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_timer_.timer.html#stop" class="tsd-kind-icon">stop</a></li>
 							</ul>
 						</section>
@@ -120,7 +139,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JakobSegerslatt/papilion/blob/8609d11/src/timer.ts#L10">timer.ts:10</a></li>
+									<li>Defined in <a href="https://github.com/JakobSegerslatt/papilion/blob/5f6099f/src/timer.ts#L26">timer.ts:26</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -140,24 +159,19 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="currenttime" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> current<wbr>Time</h3>
-					<div class="tsd-signature tsd-kind-icon">current<wbr>Time<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/JakobSegerslatt/papilion/blob/8609d11/src/timer.ts#L8">timer.ts:8</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="duration" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> duration</h3>
 					<div class="tsd-signature tsd-kind-icon">duration<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JakobSegerslatt/papilion/blob/8609d11/src/timer.ts#L10">timer.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/JakobSegerslatt/papilion/blob/5f6099f/src/timer.ts#L26">timer.ts:26</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Interval duration in ms, defaults to 1000</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="starttime" class="tsd-anchor"></a>
@@ -165,9 +179,14 @@
 					<div class="tsd-signature tsd-kind-icon">start<wbr>Time<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JakobSegerslatt/papilion/blob/8609d11/src/timer.ts#L7">timer.ts:7</a></li>
+							<li>Defined in <a href="https://github.com/JakobSegerslatt/papilion/blob/5f6099f/src/timer.ts#L23">timer.ts:23</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Starttime of when the timer starts, used for the accuracy calculation</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="timerid" class="tsd-anchor"></a>
@@ -175,9 +194,14 @@
 					<div class="tsd-signature tsd-kind-icon">timer<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Timeout</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JakobSegerslatt/papilion/blob/8609d11/src/timer.ts#L3">timer.ts:3</a></li>
+							<li>Defined in <a href="https://github.com/JakobSegerslatt/papilion/blob/5f6099f/src/timer.ts#L17">timer.ts:17</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Id returned by setTimer, used to stop the timer</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="totalticks" class="tsd-anchor"></a>
@@ -185,9 +209,14 @@
 					<div class="tsd-signature tsd-kind-icon">total<wbr>Ticks<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/JakobSegerslatt/papilion/blob/8609d11/src/timer.ts#L5">timer.ts:5</a></li>
+							<li>Defined in <a href="https://github.com/JakobSegerslatt/papilion/blob/5f6099f/src/timer.ts#L20">timer.ts:20</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The amount of ticks/callbacks that has been invoked for the current instance</p>
+						</div>
+					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
@@ -202,30 +231,45 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JakobSegerslatt/papilion/blob/8609d11/src/timer.ts#L18">timer.ts:18</a></li>
+									<li>Defined in <a href="https://github.com/JakobSegerslatt/papilion/blob/5f6099f/src/timer.ts#L39">timer.ts:39</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Resets the start time and the ticks of the timer
+										(used for safechecking the timing accuracy),
+									making it ready for another start().</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="run" class="tsd-anchor"></a>
-					<h3>run</h3>
+					<a name="start" class="tsd-anchor"></a>
+					<h3>start</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">run<span class="tsd-signature-symbol">(</span>callback<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">start<span class="tsd-signature-symbol">(</span>callback<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JakobSegerslatt/papilion/blob/8609d11/src/timer.ts#L23">timer.ts:23</a></li>
+									<li>Defined in <a href="https://github.com/JakobSegerslatt/papilion/blob/5f6099f/src/timer.ts#L48">timer.ts:48</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Starts the timer, invoking the callback</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>callback: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The callback to invoke</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -242,9 +286,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/JakobSegerslatt/papilion/blob/8609d11/src/timer.ts#L48">timer.ts:48</a></li>
+									<li>Defined in <a href="https://github.com/JakobSegerslatt/papilion/blob/5f6099f/src/timer.ts#L76">timer.ts:76</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Stops the timer by clearing the current timerId for the setTimer</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -258,10 +307,19 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_helper_functions_.html">"helper-<wbr>functions"</a>
+						<a href="../modules/_angular_utils_.html">"angular-<wbr>utils"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_component_decorators_.html">"component-<wbr>decorators"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_index_.html">"index"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_object_utils_.html">"object-<wbr>utils"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_string_utils_.html">"string-<wbr>utils"</a>
 					</li>
 					<li class="current tsd-kind-external-module">
 						<a href="../modules/_timer_.html">"timer"</a>
@@ -279,9 +337,6 @@
 								<a href="_timer_.timer.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="_timer_.timer.html#currenttime" class="tsd-kind-icon">current<wbr>Time</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="_timer_.timer.html#duration" class="tsd-kind-icon">duration</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
@@ -297,7 +352,7 @@
 								<a href="_timer_.timer.html#reset" class="tsd-kind-icon">reset</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_timer_.timer.html#run" class="tsd-kind-icon">run</a>
+								<a href="_timer_.timer.html#start" class="tsd-kind-icon">start</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_timer_.timer.html#stop" class="tsd-kind-icon">stop</a>
