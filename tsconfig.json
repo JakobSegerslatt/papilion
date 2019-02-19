@@ -5,6 +5,7 @@
         "declaration": true,
         "outDir": "./dist",
         "sourceMap": true,
+        "inlineSourceMap": false,
         "strict": true,
         "strictPropertyInitialization": false,
     },
