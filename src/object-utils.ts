@@ -84,7 +84,7 @@ export function convertToTypedClass<T = object>(type: any, unTypedItem: any): T 
  * @param obj The object to check, e.g. an Enum
  * @param value A value from within the object
  */
-export function findKeyForValue(obj: any, value: any): any {
+export function findKeyForValue(obj: any, value: any): string | number | undefined {
     for (const key in obj) {
         if (obj.hasOwnProperty(key)) {
             if (obj[key] === value) {
@@ -116,25 +116,29 @@ export function flattenTree<T = object>(array: T[] = [], key: string | ((s: T) =
  * grouped by a common property
  * @param array All properties
  */
-export function groupArrayByProperty<T = any>(array: T[], propertyName: string): T[][] {
-    const sorted: T[][] = [];
+export function groupArrayByProperty<T = any>(
+    array: T[],
+    key: string | ((s: T) => string | number)
+): T[][] {
+    const grouped: T[][] = [];
 
     // Get an array with the relation names and remove dublicates
     let uniqueValues: string[] = array.map((item) => {
-        let value = (item as any)[propertyName];
+        let value = (key instanceof Function ? key(item) : (item as any)[key]);
         if (typeof value === 'string') {
             value = value.toLocaleLowerCase();
         }
         return value;
-    }).filter((val) => !!val && val.length > 0);
+    }).filter((val) => (!!val && val.length > 0) || typeof val === 'number');
     uniqueValues = removeDuplicates(uniqueValues);
 
     // For each property, push in it's related items
     uniqueValues.forEach((propertyValue) => {
-        sorted.push(array.filter((item) => (item as any)[propertyName] === propertyValue));
+        grouped.push(array.filter((item) =>
+            (key instanceof Function ? key(item) : (item as any)[key]) === propertyValue));
     });
 
-    return sorted;
+    return grouped;
 }
 
 /**
@@ -186,7 +190,7 @@ export function groupArrayByProperty<T = any>(array: T[], propertyName: string):
  * Checks if @param obj is not null and is an object.
  */
 export function isObject(obj: any): boolean {
-    return obj !== null && typeof obj === 'object';
+    return obj !== null && typeof obj === 'object' && !Array.isArray(obj);
 }
 
 /**
