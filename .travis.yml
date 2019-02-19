@@ -6,7 +6,7 @@ install:
 script:  
   - npm run ci
 # Update Coveralls
-after_script: "cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js"
+after_script: "npm run coveralls"
 branches:
   only:
     - master

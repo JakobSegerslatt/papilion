@@ -16,6 +16,7 @@
     "cover": "nyc mocha --require ts-node/register --require source-map-support/register --full-trace --bail test/**/*.spec.ts",
     "cover-old": "istanbul cover node_modules/mocha/bin/_mocha test/*.spec.ts --reporter",
     "ci": "npm run lint && npm run build && npm run cover",
+    "coveralls": "npm run cover -- --report lcovonly && cat ./coverage/lcov.info | coveralls",
     "postversion": "git push && git push --tags",
     "prepublishOnly": "npm run ci",
     "preversion": "npm run ci",
