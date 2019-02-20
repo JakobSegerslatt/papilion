@@ -11,6 +11,8 @@ Helpers for strings and objects, an accurate timer and some useful angular spefi
 
 **`import { Timer } from 'papilion'`**
 
+For full list of methods and classes, see Documentation
+
 # Documentation
 https://jakobsegerslatt.github.io/papilion/
 
