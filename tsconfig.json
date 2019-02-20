@@ -10,7 +10,6 @@
         "strictPropertyInitialization": false,
     },
     "include": [
-        "test",
         "src",
     ],
     "exclude": [
