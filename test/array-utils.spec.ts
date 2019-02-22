@@ -89,6 +89,13 @@ describe('getRandomEntry() test', () => {
         const bar = getRandomEntry([]);
         expect(bar).to.equal(undefined);
     });
+
+    it('should return the first entry for an array of 1', () => {
+        const source = [{ foo: 'foo' }];
+        const arrayToPopulate = [{ foo: 'foo' }];
+        const bar = getRandomEntry(source, arrayToPopulate);
+        expect(bar).to.eql({ foo: 'foo' });
+    });
 });
 
 describe('groupArrayByProperty() test', () => {

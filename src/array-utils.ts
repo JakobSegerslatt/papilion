@@ -22,9 +22,23 @@ export function flattenTree<T = object>(array: T[] = [], key: string | ((s: T) =
  * Based on Math.random()
  * @param array The array of which you want a random entry
  */
-export function getRandomEntry<T>(array: T[]): T {
+export function getRandomEntry<T>(array: T[], arrayToPopulate?: T[], tryCount?: number): T {
     const randomIndex = Math.floor(Math.random() * array.length);
-    return array[randomIndex];
+    const randomEntry = array[randomIndex];
+
+    /**
+     * If arrayToPopulate is provided; run this method again.
+     * Repeat until the maxium amount of tries has been done
+     * so we avoid getting stuck in an infinite loop
+     * (which could happen if @param array only has a single entry)
+     */
+    tryCount = tryCount || 5;
+    if (tryCount > 0 && arrayToPopulate && arrayToPopulate.includes(randomEntry)) {
+        tryCount--;
+        return getRandomEntry(array, arrayToPopulate);
+    }
+
+    return randomEntry;
 }
 
 /**
