@@ -1,5 +1,12 @@
 export { throwIfAlreadyLoaded } from './angular-utils';
 
+export {
+    flattenTree,
+    getRandomEntry,
+    groupArrayByProperty,
+    removeDuplicates,
+} from './array-utils';
+
 export { Storage } from './component-decorators';
 
 export {
@@ -7,10 +14,7 @@ export {
     clone,
     convertToTypedClass,
     findKeyForValue,
-    flattenTree,
-    groupArrayByProperty,
     isObject,
-    removeDuplicates,
 } from './object-utils';
 
 export {
