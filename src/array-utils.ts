@@ -17,10 +17,14 @@ export function flattenTree<T = object>(array: T[] = [], key: string | ((s: T) =
 }
 
 /**
- * @returns A random entry from an array
+ * @returns a random entry from a an array
  *
  * Based on Math.random()
- * @param array The array of which you want a random entry
+ * @param array The array from which you want a random entry
+ * @param arrayToPopulate Optional. If provided, the function checks that
+ * the returned entry is not already in the arrayToPopulate.
+ * @param tryCount The amount of times the function should try to return a unique
+ * value (since this method is recursive). Defaults to 5.
  */
 export function getRandomEntry<T>(array: T[], arrayToPopulate?: T[], tryCount?: number): T {
     const randomIndex = Math.floor(Math.random() * array.length);
