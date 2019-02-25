@@ -19,8 +19,7 @@
     "postversion": "git push && git push --tags",
     "prepublishOnly": "npm run ci",
     "preversion": "npm run ci",
-    "docs": "typedoc --out docs src",
-    "gh-pages": "rimraf docs && npm run docs && gh-pages -d docs"
+    "docs": "typedoc --out docs src && type nul >docs/.nojekyll"
   },
   "nyc": {
     "include": [
@@ -61,10 +60,10 @@
     "@types/node": "^11.9.4",
     "chai": "^4.2.0",
     "coveralls": "^3.0.2",
-    "gh-pages": "^2.0.1",
     "mocha": "^6.0.0",
     "mocha-lcov-reporter": "^1.3.0",
     "nyc": "^13.3.0",
+    "shx": "^0.3.2",
     "source-map-support": "^0.5.10",
     "ts-node": "^8.0.2",
     "tslint": "^5.12.1",

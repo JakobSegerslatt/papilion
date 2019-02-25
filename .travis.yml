@@ -10,6 +10,3 @@ after_script: "npm run coveralls"
 branches:
   only:
     - master
-before_deploy:
-  - touch .nojekyll
-  - sed -i '/doc/d' .gitignore

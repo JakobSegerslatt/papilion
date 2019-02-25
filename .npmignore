@@ -16,6 +16,7 @@ yarn.lock
 src
 test
 examples
+docs
 CHANGELOG.md
 .travis.yml
 .editorconfig
@@ -23,3 +24,4 @@ CHANGELOG.md
 .eslintrc
 .babelrc
 .gitignore
+.nojekyll
